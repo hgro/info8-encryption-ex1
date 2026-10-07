@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verschlüsselung – Begriffe üben</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1d2433;--mute:#5d667a;--line:#cfd5e3;--acc:#3b5bdb;--accbg:#e7ecff;--ok:#2b8a3e;--okbg:#e3f6e8;--bad:#c92a2a;--badbg:#fde8e8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171f;--card:#1e2330;--ink:#e8ebf3;--mute:#9aa3b8;--line:#3a4256;--acc:#8ea5ff;--accbg:#27304f;--ok:#69db7c;--okbg:#1e3a27;--bad:#ff8787;--badbg:#44222a}}
+:root[data-theme="dark"]{--bg:#14171f;--card:#1e2330;--ink:#e8ebf3;--mute:#9aa3b8;--line:#3a4256;--acc:#8ea5ff;--accbg:#27304f;--ok:#69db7c;--okbg:#1e3a27;--bad:#ff8787;--badbg:#44222a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:900px;margin:0 auto;padding:16px}
+h1{font-size:1.6rem;margin:.2em 0}
+h2{font-size:1.2rem;margin:0 0 .3em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0}
+.hint{color:var(--mute);margin:.2em 0 .8em}
+.bank{display:flex;flex-wrap:wrap;gap:8px;padding:10px;border:1px dashed var(--line);border-radius:10px;margin-bottom:12px}
+.chip{border:2px solid var(--acc);background:var(--accbg);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-weight:600;cursor:pointer}
+.chip.sel{background:var(--acc);color:var(--card)}
+.chip.used{opacity:.35}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch;margin:8px 0}
+.expl{padding:8px 0}
+.slot{min-height:44px;border:2px dashed var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;padding:4px 8px;cursor:pointer;font-weight:600;background:var(--card);color:var(--mute)}
+.slot.full{border-style:solid;border-color:var(--acc);color:var(--ink);background:var(--accbg)}
+.slot.ok{border-color:var(--ok);background:var(--okbg);color:var(--ok)}
+.slot.bad{border-color:var(--bad);background:var(--badbg);color:var(--bad)}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.btn{border:0;border-radius:10px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer;background:var(--acc);color:var(--card)}
+.btn.sec{background:transparent;border:2px solid var(--line);color:var(--ink)}
+.msg{font-weight:600}
+.scroll{overflow-x:auto;padding:6px 0}
+.diag{display:grid;grid-template-columns:repeat(13,auto);grid-template-rows:auto auto auto;min-width:820px;align-items:center;justify-items:center;gap:4px}
+.diag .slot{min-width:120px}
+.arr{font-size:1.6rem;color:var(--mute);line-height:1}
+.lbl{font-size:.8rem;color:var(--mute)}
+.fixed{border:2px solid var(--line);border-radius:10px;padding:8px 12px;font-weight:600;background:var(--bg)}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>🔐 Verschlüsselung – Begriffe üben</h1>
+<p class="hint">So geht's: Tippe zuerst auf einen Begriff (er wird blau) und dann auf das passende Feld. Tippe auf ein gefülltes Feld, um den Begriff wieder zu entfernen.</p>
+
+<section class="card" id="t1">
+<h2>Aufgabe 1: Begriffe zuordnen</h2>
+<p class="hint">Ordne jedem Begriff die richtige Erklärung zu.</p>
+<div class="bank" data-bank></div>
+<div data-rows></div>
+<div class="btns"><button class="btn" data-check>Überprüfen</button><button class="btn sec" data-reset>Neu starten</button><span class="msg" data-msg></span></div>
+</section>
+
+<section class="card" id="t2">
+<h2>Aufgabe 2: Schaubild vervollständigen</h2>
+<p class="hint">Setze die Begriffe in das Schaubild ein. Ein Begriff darf mehrfach verwendet werden.</p>
+<div class="bank" data-bank></div>
+<div class="scroll">
+<div class="diag">
+  <div style="grid-column:1;grid-row:1"><div class="slot" data-ans="Sender">?</div></div>
+  <div class="arr" style="grid-column:2;grid-row:1">→</div>
+  <div style="grid-column:3;grid-row:1"><div class="slot" data-ans="Klartext">?</div></div>
+  <div class="arr" style="grid-column:4;grid-row:1">→</div>
+  <div style="grid-column:5;grid-row:1"><div class="slot" data-ans="verschlüsseln">?</div></div>
+  <div class="arr" style="grid-column:6;grid-row:1">→</div>
+  <div style="grid-column:7;grid-row:1"><div class="slot" data-ans="Geheimtext">?</div></div>
+  <div class="arr" style="grid-column:8;grid-row:1">→</div>
+  <div style="grid-column:9;grid-row:1"><div class="slot" data-ans="entschlüsseln">?</div></div>
+  <div class="arr" style="grid-column:10;grid-row:1">→</div>
+  <div style="grid-column:11;grid-row:1"><div class="slot" data-ans="Klartext">?</div></div>
+  <div class="arr" style="grid-column:12;grid-row:1">→</div>
+  <div style="grid-column:13;grid-row:1"><div class="slot" data-ans="Empfänger">?</div></div>
+
+  <div class="arr" style="grid-column:5;grid-row:2">↑</div>
+  <div class="arr" style="grid-column:9;grid-row:2">↑</div>
+  <div style="grid-column:5 / 10;grid-row:3;display:flex;flex-direction:column;align-items:center;gap:4px"><div class="slot" data-ans="Verschlüsselungsverfahren" style="min-width:230px">?</div><span class="lbl">… nach dem gleichen Verfahren (gleiche Regel)</span></div>
+</div>
+</div>
+<div class="btns"><button class="btn" data-check>Überprüfen</button><button class="btn sec" data-reset>Neu starten</button><span class="msg" data-msg></span></div>
+</section>
+</main>
+
+<script>
+const T1=[
+["Sender","Die Person, die eine Nachricht verschicken möchte."],
+["Empfänger","Die Person, die die Nachricht bekommen soll."],
+["Klartext","Die ursprüngliche, lesbare Nachricht."],
+["Geheimtext","Der verschlüsselte Text, den Unbefugte nicht lesen können."],
+["verschlüsseln","Den Klartext nach einer bestimmten Regel in Geheimtext umwandeln."],
+["entschlüsseln","Den Geheimtext wieder in den Klartext zurückverwandeln."],
+["Verschlüsselungsverfahren","Die Regel, nach der ver- und entschlüsselt wird (z. B. Caesar-Verfahren)."]
+];
+const TERMS=T1.map(t=>t[0]);
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+
+function board(root,reusable){
+  const bank=root.querySelector('[data-bank]'),msg=root.querySelector('[data-msg]');
+  let sel=null;
+  const slots=()=>[...root.querySelectorAll('.slot')];
+  function build(){
+    bank.innerHTML='';
+    shuffle(TERMS).forEach(t=>{const b=document.createElement('button');b.className='chip';b.textContent=t;b.onclick=()=>{sel=(sel===t?null:t);refresh()};bank.appendChild(b)});
+    slots().forEach(s=>{s.textContent='?';s.dataset.val='';s.className='slot'});
+    msg.textContent='';sel=null;refresh();
+  }
+  function refresh(){
+    [...bank.children].forEach(c=>{
+      c.classList.toggle('sel',c.textContent===sel);
+      c.classList.toggle('used',!reusable&&slots().some(s=>s.dataset.val===c.textContent));
+    });
+  }
+  root.addEventListener('click',e=>{
+    const s=e.target.closest('.slot');if(!s)return;
+    msg.textContent='';
+    if(sel){
+      if(!reusable)slots().forEach(o=>{if(o.dataset.val===sel){o.dataset.val='';o.textContent='?';o.className='slot'}});
+      s.dataset.val=sel;s.textContent=sel;s.className='slot full';sel=null;
+    }else if(s.dataset.val){s.dataset.val='';s.textContent='?';s.className='slot'}
+    refresh();
+  });
+  root.querySelector('[data-reset]').onclick=()=>{root.querySelector('[data-rows]')&&buildRows();build()};
+  root.querySelector('[data-check]').onclick=()=>{
+    let ok=0,filled=0;const all=slots();
+    all.forEach(s=>{
+      if(!s.dataset.val){s.className='slot';return}
+      filled++;
+      const right=s.dataset.val===s.dataset.ans;
+      s.className='slot '+(right?'ok':'bad');if(right)ok++;
+    });
+    msg.textContent=ok===all.length?'🎉 Alles richtig! Super!':(filled<all.length?`${ok} von ${all.length} richtig – es fehlen noch Felder.`:`${ok} von ${all.length} richtig – korrigiere die roten Felder.`);
+  };
+  let buildRows=()=>{};
+  const rows=root.querySelector('[data-rows]');
+  if(rows){
+    buildRows=()=>{
+      rows.innerHTML='';
+      shuffle(T1).forEach(([t,x])=>{
+        const r=document.createElement('div');r.className='row';
+        r.innerHTML='<div class="expl"></div><div class="slot" data-ans="">?</div>';
+        r.firstChild.textContent=x;r.lastChild.dataset.ans=t;rows.appendChild(r);
+      });
+    };
+    buildRows();
+  }
+  build();
+}
+board(document.getElementById('t1'),false);
+board(document.getElementById('t2'),true);
+</script>
+</body>
+</html>
